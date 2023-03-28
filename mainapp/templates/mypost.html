@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+{%block title%}<title>Blogger|Home</title>{%endblock%}
+{%block body %}
+
+
+<div class="container mt-1 d-flex">
+    <div class="row mb-2 bg-dark-subtle">
+    
+        
+    
+        <div class="col-lg-12 col-md-8 col-sm-6 col-12 ms-auto"  style="border: 2px solid rgb(163, 146, 146);">
+            <h2 class="bg-info m-2 text-center p-1 rounded">mypost</h2>
+            {%if messages %}
+            {%for i in messages %}
+            <div class="alert alert-primary" role="alert">
+                {{i}}
+              </div>
+            {%endfor%}
+            {%endif%}
+            
+            {%if post%}
+           {%for i in post%}
+           <div class="row mb-2  me-auto" >
+               <div class="col-lg-3 col-md-6 col-12 col-md-4 col-4 mb-2 "   >
+                   <img src="{{i.image.url}}" height="210px" width="200px" style="object-fit: contain; " class="bg-dark-subtle w-100" alt="">
+   
+               </div>
+               <div class="col-lg-7 col-md-6 col-12  " style="border-bottom: 2px solid rgb(242, 10, 10);">
+                   <span class="fw-bolder fs-5">{{i.category}}</span><br>
+                   <span class="fw-bold ">{{i.title|truncatechars:30}}</span><br>
+                   {{i.content|truncatechars:300}} <span class="bg-dark rounded p-1 text-light fw-bold w-100 ">more🠮</span><br><br>
+                   <a href="{%url 'editpost' i.id%}"  class="btn bg-warning w-25 text-light">Edit</a>
+                   <a href="{%url 'deletepost' i.id%}" class="btn bg-danger w-25 text-light">Delete</a>
+   
+               </div>
+   
+               {%endfor%}
+               
+           {%else%}
+        <div class="container">
+            <div class="row ms-5">
+                <div class="col-lg-6 mx-auto w-100 ">
+                    <h3>NO Post availabe</h3>
+            </div>
+        </div>
+           </div>
+           {%endif%}
+                
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    </div>
+</div>
+
+
+
+</div>
+
+{%endblock%}

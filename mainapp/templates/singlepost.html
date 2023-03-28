@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%block title%}<title>Blogger|Home</title>{%endblock%}
+{%block body %}
+
+
+<div class="container mt-1 d-flex">
+    <div class="row mb-2 bg-dark-subtle">
+    
+        
+    
+        <div class="col-lg-10 col-md-8 col-sm-6 col-12 ms-auto"  style="border: 2px solid rgb(163, 146, 146);">
+        <h2 class="bg-info m-2 text-center p-1 rounded"><a href="{%url 'home'%} " class="btn text-light fw-bolder fs-5 btn-outline-primary">←</a> {{post.category}}  </h2>
+            
+        
+           <div class="row mb-2  me-auto" >
+               <div class="col-lg-3 col-md-6 col-12 col-md-4 col-4 mb-2 "   >
+                   <img src="{{post.image.url}}" height="210px" width="200px" style="object-fit: contain; " class="bg-dark-subtle w-100" alt="">
+   
+               </div>
+               <div class="col-lg-7 col-md-6 col-12  " style="border-bottom: 2px solid rgb(242, 10, 10);">
+                   <span class="fw-bolder fs-5">{{post.category}}</span><br>
+                   <span class="fw-bold ">{{post.title}}</span><br>
+                   {{post.content}}  <span class="fw-bolder fs-6">author:({{post.author}})</span></h2>
+   
+               </div>  
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    
+</div>
+<div class="container">
+    <div class="row">
+        <h2 class="bg-info rounded text-center p-2">Related Post</h2>
+       {%for i in releted_post %}
+       <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+        <div class="card" style="width: 18rem;">
+            <img src="{{i.image.url}}" height="200px" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.category}}</h5>
+              <p class="card-text">{{i.title}}</p>
+              <a href="{%url 'singlepost' i.id%}" class="btn btn-primary">Read more🠮</a>
+            </div>
+          </div>
+
+       </div>
+       {%endfor%}
+    </div>
+</div>
+
+
+
+
+{%endblock%}

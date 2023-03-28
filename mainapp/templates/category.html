@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags %}
+
+{%block title%} <title>Blogger | Addpost</title> {%endblock%}
+{%block body%}
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-5 col-md-6 col-12 mx-auto form control bg-dark-subtle rounded  mt-4">
+            <h3 class="text-center">Add Category  Here</h3>
+            <form action="" method='post' class="p-3" enctype="multipart/form-data">
+                {%csrf_token%}
+                {{categoryform|crispy}}
+                <input type="submit" class="btn bg-success w-100 mt-3" value="Addcategory">
+            </form>
+        </div>
+       
+    </div>
+   
+</div>
+{%endblock%}

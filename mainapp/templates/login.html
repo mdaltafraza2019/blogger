@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags %}
+
+{%block title%} <title>Blogger | Addpost</title> {%endblock%}
+{%block body%}
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12 mx-auto form control bg-dark-subtle rounded  mt-4">
+            <h3 class="text-center">Login Here</h3>
+            {%if messages %}
+            {%for i in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{i}}
+              </div>
+            {%endfor%}
+            {%endif%}
+            <form action="" method='post' class="p-3">
+                {%csrf_token%}
+                {{form|crispy}}
+                <input type="submit" class="btn bg-success w-100 mt-3" value="Login">
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
